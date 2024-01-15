@@ -344,7 +344,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 			if (encodedResource.getEncoding() != null) {
 				inputSource.setEncoding(encodedResource.getEncoding());
 			}
-			return doLoadBeanDefinitions(inputSource, encodedResource.getResource());
+			return doLoadBeanDefinitions(inputSource, encodedResource.getResource()); // 处理xml文件 -> BeanDefinition
 		}
 		catch (IOException ex) {
 			throw new BeanDefinitionStoreException(
@@ -396,7 +396,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 			throws BeanDefinitionStoreException {
 
 		try {
-			Document doc = doLoadDocument(inputSource, resource);
+			Document doc = doLoadDocument(inputSource, resource); // 将resource文件转化为Document文件方式
 			int count = registerBeanDefinitions(doc, resource);
 			if (logger.isDebugEnabled()) {
 				logger.debug("Loaded " + count + " bean definitions from " + resource);
@@ -455,7 +455,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 		if (validationModeToUse != VALIDATION_AUTO) {
 			return validationModeToUse;
 		}
-		int detectedMode = detectValidationMode(resource);
+		int detectedMode = detectValidationMode(resource); // 获取是用那种方式获取对应的xml解析方式 主要有xsd 和dtd
 		if (detectedMode != VALIDATION_AUTO) {
 			return detectedMode;
 		}

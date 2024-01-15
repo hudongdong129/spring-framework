@@ -259,6 +259,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 */
 	public AbstractApplicationContext(@Nullable ApplicationContext parent) {
 		this();
+		// 针对父子容器场景需要设置对应的父容器，在Spring MVC中会有父子容器的概念
 		setParent(parent);
 	}
 
@@ -535,6 +536,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		this.parent = parent;
 		if (parent != null) {
 			Environment parentEnvironment = parent.getEnvironment();
+			// 将父容器的环境变量merge到子容器中
 			if (parentEnvironment instanceof ConfigurableEnvironment configurableEnvironment) {
 				getEnvironment().merge(configurableEnvironment);
 			}
@@ -673,6 +675,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			}
 		}
 
+		// Spring扩展点
 		// Initialize any placeholder property sources in the context environment.
 		initPropertySources();
 

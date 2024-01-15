@@ -64,7 +64,13 @@ final class PostProcessorRegistrationDelegate {
 	private PostProcessorRegistrationDelegate() {
 	}
 
-
+	/**
+	 * 执行BeanFactoryPostProcessor和BeanDefinitionRegistryPostProcessor和传入的beanFactoryPostProcessors
+	 * 执行顺序：自定义的beanFactoryPostProcessors -> BeanDefinitionRegistryPostProcessor -> BeanFactoryPostProcessor
+	 * 每个其中先执行实现了PriorityOrdered接口的，然后是实现了Ordered接口的，最后是普通的
+	 * @param beanFactory
+	 * @param beanFactoryPostProcessors
+	 */
 	public static void invokeBeanFactoryPostProcessors(
 			ConfigurableListableBeanFactory beanFactory, List<BeanFactoryPostProcessor> beanFactoryPostProcessors) {
 

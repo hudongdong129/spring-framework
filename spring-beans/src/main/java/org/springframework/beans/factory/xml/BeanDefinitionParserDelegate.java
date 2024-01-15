@@ -402,6 +402,7 @@ public class BeanDefinitionParserDelegate {
 	 */
 	@Nullable
 	public BeanDefinitionHolder parseBeanDefinitionElement(Element ele) {
+		// 处理bean标签
 		return parseBeanDefinitionElement(ele, null);
 	}
 
@@ -512,17 +513,23 @@ public class BeanDefinitionParserDelegate {
 		}
 
 		try {
+			// 创建一个GenericBeanDefinition对象
 			AbstractBeanDefinition bd = createBeanDefinition(className, parent);
 
+			// 处理bean自身标签的数据
 			parseBeanDefinitionAttributes(ele, beanName, containingBean, bd);
 			bd.setDescription(DomUtils.getChildElementValueByTagName(ele, DESCRIPTION_ELEMENT));
 
+			// 处理子标签meta属性
 			parseMetaElements(ele, bd);
 			parseLookupOverrideSubElements(ele, bd.getMethodOverrides());
 			parseReplacedMethodSubElements(ele, bd.getMethodOverrides());
 
+			// 处理constructor-arg标签
 			parseConstructorArgElements(ele, bd);
+			// 处理property标签
 			parsePropertyElements(ele, bd);
+			// 处理qualifier标签
 			parseQualifierElements(ele, bd);
 
 			bd.setResource(this.readerContext.getResource());
