@@ -127,6 +127,8 @@ public abstract class AbstractXmlApplicationContext extends AbstractRefreshableC
 		}
 		String[] configLocations = getConfigLocations();
 		if (configLocations != null) {
+			// 将xml解析成对应的BeanDefinition 其中loadBeanDefinitions有多个重载方法
+			//  String -> Resource -> document
 			reader.loadBeanDefinitions(configLocations);
 		}
 	}

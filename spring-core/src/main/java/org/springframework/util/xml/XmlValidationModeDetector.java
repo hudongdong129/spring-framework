@@ -100,7 +100,7 @@ public class XmlValidationModeDetector {
 				if (!StringUtils.hasText(content)) {
 					continue;
 				}
-				if (hasDoctype(content)) {
+				if (hasDoctype(content)) { // 如果包含DOCTYPE 则xml为DTD格式
 					isDtdValidated = true;
 					break;
 				}

@@ -340,6 +340,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	@Override
 	public ConfigurableEnvironment getEnvironment() {
 		if (this.environment == null) {
+			// 创建对应的环境变量对象
 			this.environment = createEnvironment();
 		}
 		return this.environment;

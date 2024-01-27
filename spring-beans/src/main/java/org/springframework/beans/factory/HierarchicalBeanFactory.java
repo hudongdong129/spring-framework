@@ -19,6 +19,7 @@ package org.springframework.beans.factory;
 import org.springframework.lang.Nullable;
 
 /**
+ * 在beanFactory的基础上增加了父容器的概念
  * Sub-interface implemented by bean factories that can be part
  * of a hierarchy.
  *

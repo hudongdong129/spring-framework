@@ -21,6 +21,7 @@ import org.springframework.core.ResolvableType;
 import org.springframework.lang.Nullable;
 
 /**
+ * spring容器的根接口,定义了获取bean及bean的各种属性的方法
  * The root interface for accessing a Spring bean container.
  *
  * <p>This is the basic client view of a bean container;

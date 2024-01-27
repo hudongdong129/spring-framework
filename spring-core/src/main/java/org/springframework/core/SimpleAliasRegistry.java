@@ -31,6 +31,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.util.StringValueResolver;
 
 /**
+ * 通过aliasMap作为缓存,并实现了AliasRegistry接口
  * Simple implementation of the {@link AliasRegistry} interface.
  *
  * <p>Serves as base class for
