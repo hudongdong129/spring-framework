@@ -7,7 +7,6 @@ public class Main {
 //		ClassPathXmlApplicationContext applicationContext = new MyClassPathXmlApplicationContext("applicationcontext.xml");
 		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationcontext.xml");
 		Person person = applicationContext.getBean(Person.class);
-
 		System.out.println(person.getName());
 	}
 }

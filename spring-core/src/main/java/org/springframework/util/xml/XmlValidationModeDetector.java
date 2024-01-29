@@ -96,11 +96,13 @@ public class XmlValidationModeDetector {
 			boolean isDtdValidated = false;
 			String content;
 			while ((content = reader.readLine()) != null) {
-				content = consumeCommentTokens(content); // 过滤掉注释内容 <!-- -->
+				// 过滤掉注释内容 <!-- -->
+				content = consumeCommentTokens(content);
 				if (!StringUtils.hasText(content)) {
 					continue;
 				}
-				if (hasDoctype(content)) { // 如果包含DOCTYPE 则xml为DTD格式
+				// 如果包含DOCTYPE 则xml为DTD格式
+				if (hasDoctype(content)) {
 					isDtdValidated = true;
 					break;
 				}

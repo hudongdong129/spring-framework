@@ -280,6 +280,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 				this.entityResolver = new ResourceEntityResolver(resourceLoader);
 			}
 			else {
+				// 使用默认的实现
 				this.entityResolver = new DelegatingEntityResolver(getBeanClassLoader());
 			}
 		}
@@ -458,7 +459,9 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 		if (validationModeToUse != VALIDATION_AUTO) {
 			return validationModeToUse;
 		}
-		int detectedMode = detectValidationMode(resource); // 获取是用那种方式获取对应的xml解析方式 主要有xsd 和dtd
+		// 获取是用那种方式获取对应的xml解析方式 主要有xsd 和dtd
+		// 如果包含DOCTYPE 则xml为DTD格式 其它为xsd格式
+		int detectedMode = detectValidationMode(resource);
 		if (detectedMode != VALIDATION_AUTO) {
 			return detectedMode;
 		}
@@ -518,9 +521,13 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 	 * @see BeanDefinitionDocumentReader#registerBeanDefinitions
 	 */
 	public int registerBeanDefinitions(Document doc, Resource resource) throws BeanDefinitionStoreException {
+		// 实例化DefaultBeanDefinitionDocumentReader后续处理document
 		BeanDefinitionDocumentReader documentReader = createBeanDefinitionDocumentReader();
+		// 在进行xml前,统计下注册的beanDefinition数量
 		int countBefore = getRegistry().getBeanDefinitionCount();
+		// 加载注册对应的beanDefinition
 		documentReader.registerBeanDefinitions(doc, createReaderContext(resource));
+		// 记录本次加载了多少个beanDefinition
 		return getRegistry().getBeanDefinitionCount() - countBefore;
 	}
 
