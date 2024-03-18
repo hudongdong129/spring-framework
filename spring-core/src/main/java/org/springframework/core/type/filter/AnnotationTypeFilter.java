@@ -25,7 +25,7 @@ import org.springframework.core.type.classreading.MetadataReader;
 import org.springframework.lang.Nullable;
 import org.springframework.util.ClassUtils;
 
-/**
+/** 处理实现类了@Component注解的类
  * A simple {@link TypeFilter} which matches classes with a given annotation,
  * checking inherited annotations as well.
  *

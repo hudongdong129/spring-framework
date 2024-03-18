@@ -356,7 +356,7 @@ class ConfigurationClassParser {
 		return null;
 	}
 
-	/**
+	/** 处理嵌套的配置类 如:@Configuration中还包含了一个@Configuration
 	 * Register member (nested) classes that happen to be configuration classes themselves.
 	 */
 	private void processMemberClasses(ConfigurationClass configClass, SourceClass sourceClass,

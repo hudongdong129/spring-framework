@@ -133,7 +133,7 @@ public abstract class AnnotationConfigUtils {
 		registerAnnotationConfigProcessors(registry, null);
 	}
 
-	/**
+	/** 注册spring内部需要使用的一些bean,用来支持注解的使用
 	 * Register all relevant annotation post processors in the given registry.
 	 * @param registry the registry to operate on
 	 * @param source the configuration source element (already extracted)
@@ -230,7 +230,7 @@ public abstract class AnnotationConfigUtils {
 	public static void processCommonDefinitionAnnotations(AnnotatedBeanDefinition abd) {
 		processCommonDefinitionAnnotations(abd, abd.getMetadata());
 	}
-
+	// 针对一些特殊的注解进行设置属性
 	static void processCommonDefinitionAnnotations(AnnotatedBeanDefinition abd, AnnotatedTypeMetadata metadata) {
 		AnnotationAttributes lazy = attributesFor(metadata, Lazy.class);
 		if (lazy != null) {
