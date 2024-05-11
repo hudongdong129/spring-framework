@@ -104,7 +104,7 @@ class ConfigBeanDefinitionParser implements BeanDefinitionParser {
 		parserContext.pushContainingComponent(compositeDef);
 
 		configureAutoProxyCreator(parserContext, element);
-
+		// 获取<aop:config>标签下的所有子标签
 		List<Element> childElts = DomUtils.getChildElements(element);
 		for (Element elt: childElts) {
 			String localName = parserContext.getDelegate().getLocalName(elt);

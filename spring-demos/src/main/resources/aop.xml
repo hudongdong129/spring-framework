@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- AOP配置内容 -->
+
+	<bean id="logUtil" class="com.hdd.example.aop.LogUtil"></bean>
+	<bean id="calculService" class="com.hdd.example.aop.CalculService"></bean>
+
+	<aop:config>
+		<aop:aspect ref="logUtil">
+			<aop:pointcut id="pointcut_all" expression="execution(* com.hdd.example.aop.CalculService.*(..))"/>
+			<aop:before method="before" pointcut-ref="pointcut_all"/>
+			<aop:after method="after" pointcut-ref="pointcut_all"/>
+		</aop:aspect>
+	</aop:config>
+
+
+<!--	<bean id="person" class="com.hdd.example.Person">-->
+<!--		<property name="id" value="1"/>-->
+<!--		<property name="name" value="胡东东"/>-->
+<!--	</bean>-->
+
+	<!--	<bean id = "myBeanFactoryPostProcess" class="org.springframework.MyBeanFactoryPostProcess" />-->
+
+
+</beans>
