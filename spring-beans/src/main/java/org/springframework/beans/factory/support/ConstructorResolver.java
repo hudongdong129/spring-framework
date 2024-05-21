@@ -707,7 +707,7 @@ class ConstructorResolver {
 		return minNrOfArgs;
 	}
 
-	/**
+	/** 获取创建对应所需要的参数对象 例如 new A(b,c) 需要先创建b和c
 	 * Create an array of arguments to invoke a constructor or factory method,
 	 * given the resolved constructor argument values.
 	 */
