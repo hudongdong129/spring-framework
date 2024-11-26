@@ -8,14 +8,22 @@
 		<context:component-scan base-package="com.hdd.example.annotation" />
 	<!--	<context:property-placeholder system-properties-mode="OVERRIDE" />-->
 
+	<bean id="person" class="com.hdd.example.editor.Person" >
+		<property name="name" value="hdd" />
+		<property name="birthday" value="2024-11-22" />
+	</bean>
 
-<!--	<bean id="person" class="com.hdd.example.Person" >-->
-<!--		-->
-<!--		<property name="id" value="1" />-->
-<!--		<property name="name" value="胡东东"/>-->
-<!--	</bean>-->
+	<bean id = "stringToDateConvert" class="com.hdd.example.editor.StringToDateConvert" >
+		<property name="format" value="yyyy-MM-dd" />
+	</bean>
 
-	<!--	<bean id = "myBeanFactoryPostProcess" class="org.springframework.MyBeanFactoryPostProcess" />-->
+	<bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<ref bean="stringToDateConvert"/>
+			</set>
+		</property>
+	</bean>
 
 
 </beans>

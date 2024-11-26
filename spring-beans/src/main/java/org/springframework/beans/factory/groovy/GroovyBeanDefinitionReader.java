@@ -58,6 +58,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 /**
+ * 加载解析Groovy脚本,将Groovy配置的bean转化为 BeanDefinition
  * A Groovy-based reader for Spring bean definitions: like a Groovy builder,
  * but more of a DSL for Spring configuration.
  *

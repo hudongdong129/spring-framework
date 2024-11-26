@@ -76,6 +76,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 /**
+ * 处理相关注解的解析工作,将注解修饰的bean转化为对应的BeanDefinition
  * Parses a {@link Configuration} class definition, populating a collection of
  * {@link ConfigurationClass} objects (parsing a single Configuration class may result in
  * any number of ConfigurationClass objects because one Configuration class may import

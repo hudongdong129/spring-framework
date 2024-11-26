@@ -1,6 +1,7 @@
 package com.hdd.example;
 
 import com.hdd.example.aop.CalculService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main {
@@ -9,6 +10,7 @@ public class Main {
 //		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("application.xml");
 //		Person person = applicationContext.getBean(Person.class);
 		ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("aop.xml");
+		AnnotationConfigApplicationContext annotationConfigApplicationContext = new AnnotationConfigApplicationContext();
 		Integer add = applicationContext.getBean(CalculService.class).add(1, 2);
 		System.out.println(add);
 	}
