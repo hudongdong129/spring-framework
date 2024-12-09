@@ -9,25 +9,8 @@
            http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!-- AOP配置内容 -->
+	<aop:aspectj-autoproxy />
 
-	<bean id="logUtil" class="com.hdd.example.aop.LogUtil"></bean>
-	<bean id="calculService" class="com.hdd.example.aop.CalculService"></bean>
-
-	<aop:config>
-		<aop:aspect ref="logUtil">
-			<aop:pointcut id="pointcut_all" expression="execution(* com.hdd.example.aop.CalculService.*(..))"/>
-			<aop:before method="before" pointcut-ref="pointcut_all"/>
-			<aop:after method="after" pointcut-ref="pointcut_all"/>
-		</aop:aspect>
-	</aop:config>
-
-
-<!--	<bean id="person" class="com.hdd.example.Person">-->
-<!--		<property name="id" value="1"/>-->
-<!--		<property name="name" value="胡东东"/>-->
-<!--	</bean>-->
-
-	<!--	<bean id = "myBeanFactoryPostProcess" class="org.springframework.MyBeanFactoryPostProcess" />-->
-
-
+	<bean id="test" class="com.hdd.example.aop.TestBean"/>
+	<bean class="com.hdd.example.aop.AspectJTest"/>
 </beans>

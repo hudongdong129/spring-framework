@@ -1,11 +1,14 @@
 package com.hdd.example.aop;
 
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Aspect;
+
 /**
  * @author hdd
  * @description: 日志切面
  * @date 2024年05月11日
  */
-//@Aspect
+@Aspect
 public class LogUtil {
 
 
@@ -21,10 +24,12 @@ public class LogUtil {
     public void afterThrowing(){
         System.out.println("afterThrowing");
     }
-//    public void around(ProceedingJoinPoint pjp) throws Throwable {
-//        System.out.println("around before");
-//        //对原始方法的调用
-//        pjp.proceed();
-//        System.out.println("around after");
-//    }
+
+
+    public void around(ProceedingJoinPoint pjp) throws Throwable {
+        System.out.println("around before");
+        //对原始方法的调用
+        pjp.proceed();
+        System.out.println("around after");
+    }
 }

@@ -76,7 +76,9 @@ public abstract class AopNamespaceUtils {
 
 		BeanDefinition beanDefinition = AopConfigUtils.registerAspectJAnnotationAutoProxyCreatorIfNecessary(
 				parserContext.getRegistry(), parserContext.extractSource(sourceElement));
+		// 对proxy-target-class何expose-proxy属性进行填充
 		useClassProxyingIfNecessary(parserContext.getRegistry(), sourceElement);
+		// 注册BeanComponentDefinition
 		registerComponentIfNecessary(beanDefinition, parserContext);
 	}
 
@@ -84,8 +86,10 @@ public abstract class AopNamespaceUtils {
 		if (sourceElement != null) {
 			boolean proxyTargetClass = Boolean.parseBoolean(sourceElement.getAttribute(PROXY_TARGET_CLASS_ATTRIBUTE));
 			if (proxyTargetClass) {
+				// 设置proxy-Target-Class属性，是否强制使用CGLIB进行动态代理
 				AopConfigUtils.forceAutoProxyCreatorToUseClassProxying(registry);
 			}
+			// 对于expose-proxy属性设置，对于内部调用无法切面功能，需要将expose-proxy设置为true，并且((this)AopContext.currentProxy()).xxx();
 			boolean exposeProxy = Boolean.parseBoolean(sourceElement.getAttribute(EXPOSE_PROXY_ATTRIBUTE));
 			if (exposeProxy) {
 				AopConfigUtils.forceAutoProxyCreatorToExposeProxy(registry);

@@ -88,7 +88,7 @@ public class BeanFactoryAspectJAdvisorsBuilder {
 				aspectNames = this.aspectBeanNames;
 				if (aspectNames == null) {
 					List<Advisor> advisors = new ArrayList<>();
-					aspectNames = new ArrayList<>();
+					aspectNames = new ArrayList<>(); // 获取所有的bean信息
 					String[] beanNames = BeanFactoryUtils.beanNamesForTypeIncludingAncestors(
 							this.beanFactory, Object.class, true, false);
 					for (String beanName : beanNames) {
@@ -100,7 +100,7 @@ public class BeanFactoryAspectJAdvisorsBuilder {
 						Class<?> beanType = this.beanFactory.getType(beanName, false);
 						if (beanType == null) {
 							continue;
-						}
+						} // 判断类是否被@Aspect进行修饰
 						if (this.advisorFactory.isAspect(beanType)) {
 							aspectNames.add(beanName);
 							AspectMetadata amd = new AspectMetadata(beanType, beanName);
